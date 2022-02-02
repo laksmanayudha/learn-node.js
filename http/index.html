@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create HTTP</title>
+</head>
+    
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <script>
+        const body = document.body;
+        const container = document.createElement('div');
+        container.setAttribute('class', 'container');
+
+        const topp = document.createElement('div');
+        topp.setAttribute('class', 'topp');
+        topp.style.display = 'flex';
+        topp.style.justifyContent = 'center'
+        topp.style.gap = '10px'
+
+        const bot = document.createElement('div');
+        bot.setAttribute('class', 'bottom');
+        bot.style.display = 'flex';
+        bot.style.justifyContent = 'center'
+        bot.style.gap = '10px'
+        bot.style.marginTop = '10px'
+
+        body.appendChild(container);
+        container.appendChild(topp);
+        container.appendChild(bot);
+
+        let elementColor = document.createElement('div')
+        // elementColor.innerHTML = 'WHITE';
+        elementColor.style.color = 'black'
+        elementColor.style.border = '2px solid black'
+        elementColor.style.height = '200px';
+        elementColor.style.width = '200px';
+        elementColor.style.display = 'flex';
+        elementColor.style.justifyContent = 'center';
+        elementColor.style.alignItems = 'center';
+        elementColor.setAttribute('class', 'color-preview');
+        topp.appendChild(elementColor)
+
+        let colors = [
+            {colorName:'TURQUOISE', colorHex:'#1abc9c'},
+            {colorName:'EMERALD', colorHex:'#2ecc71'}, 
+            {colorName:'PETER RIVER', colorHex:'#3498db'},
+            {colorName:'AMETHYLST', colorHex:'#9b59b6'},
+            {colorName:'WET ASPHALT', colorHex:'#34495e'},
+            {colorName:'SUN FLOWER', colorHex:'#f1c40f'},
+            {colorName:'CARROT', colorHex:'#e67e22'},
+            {colorName:'ALIZARIN', colorHex:'#e74c3c'},
+            {colorName:'CLOUDS', colorHex:'#ecf0f1'},
+            {colorName:'CONCRETE', colorHex:'#95a5a6'},
+        ];
+        for(let color of colors){
+            let elementColor = document.createElement('div')
+            elementColor.innerHTML = color.colorName;
+            elementColor.style.color = 'white'
+            elementColor.style.backgroundColor = color.colorHex;
+            elementColor.style.height = '200px';
+            elementColor.style.width = '200px';
+            elementColor.style.display = 'flex';
+            elementColor.style.justifyContent = 'center';
+            elementColor.style.alignItems = 'center';
+            elementColor.setAttribute('class', 'color');
+            bot.appendChild(elementColor)
+        }
+        
+        console.log(body)
+    </script>
+    
+    <script>
+        $(document).ready(function(){
+            $(".color").on('click', function(){
+                let itemColor = $(this).css('background-color');
+                $(".color-preview").css('background-color', itemColor);
+            })
+        })
+        
+    </script>
+</body>
+</html>
