@@ -9,8 +9,12 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/products', (req, res) => {
+    res.render('products');
+})
+
 app.get('/detail', (req, res) => {
-    res.render('detail');
+    res.render('detail')
 })
 
 app.listen(PORT, () => {
