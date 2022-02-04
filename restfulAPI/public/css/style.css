@@ -177,3 +177,24 @@
     text-decoration: none;
     font-weight: bold;
 }
+
+
+/* another */
+.no-underline{
+    text-decoration: none;
+}
+
+.footer{
+    background-color: rgba(108, 190, 94, 1);
+    display: flex;
+    justify-content: flex-end;
+    height: 100px;
+    align-items: center;
+}
+
+.footer a{
+    text-decoration: none;
+    color: white;
+    font-size: 18ox;
+    margin-right: 50px;
+}
