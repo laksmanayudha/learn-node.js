@@ -1,7 +1,7 @@
-const ProductModel = require("../../models/mongodb/products/product");
+const UserModel = require("../../models/mongodb/user/user");
 
 exports.all = (req, res) => {
-    ProductModel.find().then(response => {
+    UserModel.find().then(response => {
         res.send({
             message: `Successfull to get data`,
             statusCode: 200,
@@ -18,13 +18,16 @@ exports.all = (req, res) => {
 
 exports.create = (req, res) => {
     // insert new schema Db
-    const newProduct = new ProductModel({
-        title: req.body.title,
-        description: req.body.description,
-        price: req.body.price
+    const newUser = new UserModel({
+        username: req.body.username,
+        password: req.body.password,
+        fullname: req.body.fullname,
+        email: req.body.email,
+        age: req.body.age,
+        description: req.body.description
     })
 
-    newProduct.save(newProduct).then(response => {
+    newUser.save(newUser).then(response => {
         res.send({
             message: `Successfull to create data`,
             statusCode: 200,
@@ -39,7 +42,7 @@ exports.create = (req, res) => {
 }
 
 exports.findOne = (req, res) => {
-    ProductModel.findOne({"_id": req.params.id}).then(response => {
+    UserModel.findOne({"_id": req.params.id}).then(response => {
         res.send({
             message: `Successfull to get data`,
             statusCode: 200,
@@ -55,13 +58,7 @@ exports.findOne = (req, res) => {
 
 exports.updateOne = (req, res) => {
 
-    // validasi data yang dikirimkan
-    // let dataUpdate = {}
-    // if(req.body.title) dataUpdate.title = req.body.title
-    // if(req.body.description) dataUpdate.description = req.body.description
-    // if(req.body.price) dataUpdate.price = req.body.price
-
-    ProductModel.updateOne({"_id": req.params.id}, req.body).then(response => {
+    UserModel.updateOne({"_id": req.params.id}, req.body).then(response => {
         res.send({
             message: `Sucessfull to update data`,
             statusCode: 200,
@@ -83,7 +80,7 @@ exports.delete = (req, res) => {
             statusCode: 400
         })
     }else{
-        ProductModel.deleteOne({"_id": req.body.id}).then(response => {
+        UserModel.deleteOne({"_id": req.body.id}).then(response => {
             res.send({
                 message: `Successfull to delete data`,
                 statusCode: 200
