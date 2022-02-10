@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>images</title>
+</head>
+<body>
+
+    <div>
+        <div>
+            <input type="file" name="imageData" id="imageData">
+        </div>
+        <button type="button" id="buttonSubmit">Submit</button>
+    </div>
+
+
+    <script>
+        const button = document.querySelector("#buttonSubmit")
+        button.addEventListener("click", async function(e) {
+            let imageData = document.querySelector("#imageData").files
+            console.log(imageData[0]);
+
+            let formData = new FormData();
+            formData.append("imageData", imageData[0]);
+
+            let config = {
+                method: 'post',
+                body: formData
+            }
+
+            let dataFinal = await fetch('/api/images', config)
+        })
+    </script>
+    
+</body>
+</html>
